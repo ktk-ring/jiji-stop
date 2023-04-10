@@ -5,7 +5,7 @@ import { useState, useRef } from 'react';
 
 function App() {
 
-  //postPosition = checkBatchim(nameInput) ? '와' : '과';
+  //postPosition = checkBatchim(textInput) ? '와' : '과';
 
   return (
     <div className="App">
@@ -30,12 +30,6 @@ function App() {
 
       <Generator />
 
-      <div className='output'>
-        <button type="button">
-          클립보드에 복사하기
-        </button>
-      </div>
-
     </div>
   );
 }
@@ -56,48 +50,49 @@ function checkBatchim(name) { // 이름에 받침 여부 체크
 }
 
 function Generator() { // 밈 생성기
-  const [nameInput, setName] = useState("");
-  const [nameState, setNameState] = useState(false);
+  const inputRef = useRef(null);
   const textRef = useRef(null);
 
-  let [text, setText] = useState("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+  const textPlaceholder = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+  const [text, setText] = useState(textPlaceholder);
 
   let [autoCopy, setAutoCopy] = useState(true); // 자동 복사 기본값: 켜짐
 
   const memeText = () => {
-    if (!nameInput) {
-      setNameState(false);
+    if (!inputRef.current.value) {
       alert("이름이 입력되지 않았습니다.");
-    } else {
-      setNameState(true);
-      setText(`오늘부로 ${nameInput} 지지를 철회한다.
+      return;
+    }
+    const textInput = inputRef.current.value;
+    const output = `오늘부로 ${textInput} 지지를 철회한다.
 
-오늘부터 지지관계에서 벗어나
-${nameInput}${checkBatchim(nameInput)} 나는 한몸으로 일체가 된다.
-${nameInput}에 대한 공격은 나에 대한 공격으로 간주한다.
-
-세상에 70억 명의 ${nameInput} 팬이 있다면, 나는 그들 중 한 명일 것이다.
-세상에 1억 명의 ${nameInput} 팬이 있다면, 나 또한 그들 중 한 명일 것이다.
-세상에 천만 명의 ${nameInput} 팬이 있다면, 나는 여전히 그들 중 한 명일 것이다.
-세상에 백 명의 ${nameInput} 팬이 있다면, 나는 아직도 그들 중 한 명일 것이다.
-세상에 한 명의 ${nameInput} 팬이 있다면, 그 사람은 아마도 나일 것이다.
-세상에 단 한 명의 ${nameInput} 팬도 없다면, 나는 그제서야 이 세상에 없는 것이다.
-
-${nameInput}, 나의 사랑.
-${nameInput}, 나의 빛.
-${nameInput}, 나의 어둠.
-${nameInput}, 나의 삶.
-${nameInput}, 나의 기쁨.
-${nameInput}, 나의 슬픔.
-${nameInput}, 나의 안식.
-${nameInput}, 나의 영혼.
-${nameInput}, 나.`
-      )
+      오늘부터 지지관계에서 벗어나
+      ${textInput}${checkBatchim(textInput)} 나는 한몸으로 일체가 된다.
+      ${textInput}에 대한 공격은 나에 대한 공격으로 간주한다.
+      
+      세상에 70억 명의 ${textInput} 팬이 있다면, 나는 그들 중 한 명일 것이다.
+      세상에 1억 명의 ${textInput} 팬이 있다면, 나 또한 그들 중 한 명일 것이다.
+      세상에 천만 명의 ${textInput} 팬이 있다면, 나는 여전히 그들 중 한 명일 것이다.
+      세상에 백 명의 ${textInput} 팬이 있다면, 나는 아직도 그들 중 한 명일 것이다.
+      세상에 한 명의 ${textInput} 팬이 있다면, 그 사람은 아마도 나일 것이다.
+      세상에 단 한 명의 ${textInput} 팬도 없다면, 나는 그제서야 이 세상에 없는 것이다.
+      
+      ${textInput}, 나의 사랑.
+      ${textInput}, 나의 빛.
+      ${textInput}, 나의 어둠.
+      ${textInput}, 나의 삶.
+      ${textInput}, 나의 기쁨.
+      ${textInput}, 나의 슬픔.
+      ${textInput}, 나의 안식.
+      ${textInput}, 나의 영혼.
+      ${textInput}, 나.`
+    setText(output);
+    if (autoCopy) {
+      textRef.current.textContent = output;
+      navigator.clipboard.writeText(output);
     };
 
-    if (autoCopy) {
-      document.execCommand("copy");
-    }
+
   }
 
   return (
@@ -145,12 +140,16 @@ ${nameInput}, 나.`
       </div>
 
       <div className="select">
-        <p style={{ margin: "auto 15px" }}>클립보드 <br />자동복사</p>
+        <p style={{ margin: "auto 15px" }}>
+          클립보드 <br />자동복사
+        </p>
         <input
           type="checkbox"
           id="autoCopy"
+          onChange={(e) => setAutoCopy(e.target.checked)}
           defaultChecked
-          hidden />
+          hidden
+        />
         <label for="autoCopy" className="toggleSwitch">
           <span className="toggleButton" />
         </label>
@@ -158,17 +157,28 @@ ${nameInput}, 나.`
 
       <div className="input">
         <h4 style={{ padding: "8px" }}>이름</h4>
-        <input type="text"
-          onChange={
-            (e) => setName(e.target.value)
-          } />
-        <button onClick={memeText}>생성하기</button>
+        <input type="text" ref={inputRef}
+        />
+        <button onClick={memeText} style={{ fontSize: "18px" }}>
+          생성하기
+        </button>
       </div>
 
       <div>
         <div className="output">
-          <p>{text}</p>
+          <p ref={textRef}>{text}</p>
         </div>
+      </div>
+
+      <div className="output">
+        <button
+          type="button"
+          ref={textRef}
+          onClick={() => {
+            navigator.clipboard.writeText(text)}}
+        >
+          클립보드에 복사하기
+        </button>
       </div>
 
     </div>

@@ -148,7 +148,7 @@ ${nameInput}, 나.`
       </div>
 
       <div className="select">
-        <p>클립보드 <br />자동복사</p>
+        <p style={{margin:"auto 25px"}}>클립보드 <br />자동복사</p>
         <input type="checkbox" id="autoCopy" defaultChecked hidden></input>
         <label for="autoCopy" className="toggleSwitch">
           <span className="toggleButton"></span>
@@ -166,7 +166,8 @@ ${nameInput}, 나.`
 
       <div>
         <div className="output">
-          <textarea ref={textRef} rows="23" cols="80"></textarea>
+          <textarea ref={textRef} rows="23" cols="80" id="result" hidden></textarea>
+          
           {/* <p>{memeText.text}</p> */}
         </div>
       </div>

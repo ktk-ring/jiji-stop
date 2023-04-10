@@ -12,27 +12,27 @@ function App() {
     <div className="App">
       <div className="main-title">
         <p>
-        <h1>'지지를 철회한다' 밈 생성기</h1>
-        <h2>jiji-stop generator</h2>
+          <h1>'지지를 철회한다' 밈 생성기</h1>
+          <h2>jiji-stop generator</h2>
         </p>
       </div>
 
       <div className="list">
-        <h4>사이트 설명</h4>
+        <h3>사이트 설명</h3>
         <p>
-          지지를 철회한다 밈을 생성해주는 사이트입니다.<br/><br/>
-          
-          이 밈에 이름 부분을 일일이 갈아 끼우는 것이 귀찮아서... <br/>
-          한번에 만들어주는 사이트를 만들자는 아이디어로 개발되었습니다.<br/><br/>
+          지지를 철회한다 밈을 생성해주는 사이트입니다.<br /><br />
 
-          원본부터 변형된 버전까지 자유롭게 선택하여 생성할 수 있습니다.<br/>
+          이 밈에 이름 부분을 일일이 갈아 끼우는 것이 귀찮아서... <br />
+          한번에 만들어주는 사이트를 만들자는 아이디어로 개발되었습니다.<br /><br />
+
+          원본부터 변형된 버전까지 자유롭게 선택하여 생성할 수 있습니다.<br />
         </p>
       </div>
 
       <Generator></Generator>
 
       <div className='output'>
-        <button type="button" style={{ textAlign: 'left' }}>
+        <button type="button">
           클립보드에 복사하기
         </button>
       </div>
@@ -41,7 +41,7 @@ function App() {
   );
 }
 
-function checkBatchim() {
+function checkBatchim() { // 이름에 받침 여부 체크
   if (typeof nameInput !== 'string') return null;
 
   let lastLetter = nameInput[nameInput.length - 1];
@@ -52,7 +52,7 @@ function checkBatchim() {
   return (uni - 44032) % 28 !== 0;
 }
 
-function Generator() {
+function Generator() { // 밈 생성기
   const [nameInput, setName] = useState("");
   const textRef = useRef(null);
 
@@ -83,55 +83,97 @@ ${nameInput}, 나의 안식.
 ${nameInput}, 나의 영혼.
 ${nameInput}, 나.`
 
-    textRef.current.value = text;
-    textRef.current.select();
+    if (!nameInput) {
+      alert("이름이 입력되지 않았습니다!");
+    } else {
+      textRef.current.value = text;
+      textRef.current.select();
+    }
+
     if (autoCopy) {
       document.execCommand("copy");
     }
   }
 
+  const toggleList = document.querySelectorAll(".toggleSwitch");
+
+  toggleList.forEach(($toggle) => {
+    $toggle.onClick = () => {
+      $toggle.classList.toggle('active');
+    }
+  });
+
   return (
     <div>
 
+      <div className="select">
+        <h4>종류를 선택하세요</h4>
+      </div>
+      <div className="select">
+        <label>
+          원본
+          <input type="checkbox"
+            name="version"
+            value="origin"
+            className="check"
+            defaultChecked
+          />
+        </label>
+
+        <label>
+          호날두
+          <input
+            type="checkbox"
+            name="version"
+            value="ronaldo"
+            className="check"
+          />
+        </label>
+
+        <label>
+          롤리타
+          <input type="checkbox"
+            name="version"
+            value="lolita"
+            className="check"
+          />
+        </label>
+
+        {/* {
+        version
+        ? <p>이름이 입력되지 않았습니다!</p>
+        : { 종류 선택 코드 입력 }
+        } */}
+
+      </div>
+
+      <div className="select">
+        <p>클립보드 <br />자동복사</p>
+        <input type="checkbox" id="autoCopy" defaultChecked hidden></input>
+        <label for="autoCopy" className="toggleSwitch">
+          <span className="toggleButton"></span>
+        </label>
+      </div>
+
       <div className="input">
-        <p>이름 입력</p>
-        <input type="text" onChange={
+        <h4>이름 입력</h4>
+        <input type="text"
+        onChange={
           (e) => setName(e.target.value)
         } />
-        <button onClick={memeText} style={{ fontSize: 16 }}>생성하기</button>
-      </div>
-
-      <div className="select">
-
-        <p>종류를 선택하세요</p>
-      </div>
-      <div className="select">
-
-        <p>원본</p><input type="checkbox" name="version" value="origin"></input>
-        <p>호날두</p><input type="checkbox" name="version" value="ronaldo"></input>
-        <p>롤리타</p><input type="checkbox" name="version" value="lolita"></input>
-      </div>
-      <div className="select">
-
-        <p>클립보드 자동 복사</p><button onClick={() => {toggleAutoCopy(!autoCopy);}}>
-          {autoCopy ? "켜짐 ON" : "꺼짐 OFF"}
-        </button><br />
-
+        <button onClick={memeText}>생성하기</button>
       </div>
 
       <div>
         <div className="output">
-          <p>결과</p>
-        </div>
-
-        <div className="output">
-          <textarea ref={textRef}></textarea>
-          <p>{memeText.text}</p>
+          <textarea ref={textRef} rows="23" cols="80"></textarea>
+          {/* <p>{memeText.text}</p> */}
         </div>
       </div>
 
     </div>
   )
+
 }
 
 export default App;

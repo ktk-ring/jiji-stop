@@ -67,9 +67,14 @@ input[type="text"] {
   padding: 5px 20px;
 }
 
+.info {
+  width: 18px;
+  margin-left: 2px;
+}
+
 .check {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   display: block;
   position: relative;
   background-color: #f3f3f3;
@@ -84,10 +89,10 @@ input[type="text"] {
   display: block;
   position: relative;
   border-radius: 20px;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   box-shadow: 0 0 15px rgba(0 0 0 / 20%);
   cursor: pointer;
-  margin: 25px;
+  margin: 25px 10px;
 }
 #autoCopy:checked ~ .toggleSwitch {
   background: #f03d3d;
@@ -107,7 +112,7 @@ input[type="text"] {
 }
 #autoCopy:checked ~ .toggleSwitch .toggleButton {
   left: calc(100% - 35px);
-  background: #f3f3f3;
+  background: #ffffff;
 }
 
 .output {

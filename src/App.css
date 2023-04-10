@@ -15,6 +15,28 @@ h2 {
   padding-top: 25px;
 }
 
+button {
+  width: 150px;
+  height: 50px;
+  display: block;
+  position: relative;
+  border-radius: 25px;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 15px rgba(0 0 0 / 20%);
+  cursor: pointer;
+  margin: 25px 0;
+}
+
+input[type="text"] {
+  text-align: center;
+  font-size: 24px;
+  width: 200px;
+  height: 45px;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 15px rgba(0 0 0 / 20%);
+  margin: 25px 15px;
+}
+
 .list {
   padding-left: 20px;
   text-align: center;
@@ -42,7 +64,50 @@ h2 {
   display: flex;
   justify-content: center;
   background: #f3f3f3;
-  padding-left: 40px;
+  padding: 5px 20px;
+}
+
+.check {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: relative;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 15px rgba(0 0 0 / 20%);
+  cursor: pointer;
+  margin: 15px;
+}
+
+.toggleSwitch {
+  width: 80px;
+  height: 40px;
+  display: block;
+  position: relative;
+  border-radius: 20px;
+  background-color: #f3f3f3;
+  box-shadow: 0 0 15px rgba(0 0 0 / 20%);
+  cursor: pointer;
+  margin: 25px;
+}
+#autoCopy:checked ~ .toggleSwitch {
+  background: #f03d3d;
+  transition: all 0.2s ease-in;
+}
+
+.toggleSwitch .toggleButton {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #f03d3d;
+  transition: all 0.2s ease-in;
+}
+#autoCopy:checked ~ .toggleSwitch .toggleButton {
+  left: calc(100% - 35px);
+  background: #f3f3f3;
 }
 
 .output {

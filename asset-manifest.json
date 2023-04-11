@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jiji-stop/static/css/main.21ed9396.css",
+    "main.js": "/jiji-stop/static/js/main.7f60684a.js",
+    "static/js/787.ec826e66.chunk.js": "/jiji-stop/static/js/787.ec826e66.chunk.js",
+    "index.html": "/jiji-stop/index.html",
+    "main.21ed9396.css.map": "/jiji-stop/static/css/main.21ed9396.css.map",
+    "main.7f60684a.js.map": "/jiji-stop/static/js/main.7f60684a.js.map",
+    "787.ec826e66.chunk.js.map": "/jiji-stop/static/js/787.ec826e66.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21ed9396.css",
+    "static/js/main.7f60684a.js"
+  ]
+}

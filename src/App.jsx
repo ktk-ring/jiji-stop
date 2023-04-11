@@ -5,8 +5,6 @@ import { useState, useRef } from 'react';
 
 function App() {
 
-  //postPosition = checkBatchim(textInput) ? '와' : '과';
-
   return (
     <div className="App">
       <div className="mainTitle">
@@ -56,6 +54,14 @@ function Generator() { // 밈 생성기
   const textPlaceholder = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
   const [text, setText] = useState(textPlaceholder);
 
+
+  const [checkVer00, setCheckVer00] = useState(true);
+  const [checkVer01, setCheckVer01] = useState(true);
+  const [checkVer02, setCheckVer02] = useState(true);
+
+  const [tooltip, setTooltip] = useState("");
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   let [autoCopy, setAutoCopy] = useState(true); // 자동 복사 기본값: 켜짐
 
   const memeText = () => {
@@ -64,36 +70,65 @@ function Generator() { // 밈 생성기
       return;
     }
     const textInput = inputRef.current.value;
-    const output = `오늘부로 ${textInput} 지지를 철회한다.
+    const ver00 =
+`오늘부로 ${textInput} 지지를 철회한다.
 
-      오늘부터 지지관계에서 벗어나
-      ${textInput}${checkBatchim(textInput)} 나는 한몸으로 일체가 된다.
-      ${textInput}에 대한 공격은 나에 대한 공격으로 간주한다.
-      
-      세상에 70억 명의 ${textInput} 팬이 있다면, 나는 그들 중 한 명일 것이다.
-      세상에 1억 명의 ${textInput} 팬이 있다면, 나 또한 그들 중 한 명일 것이다.
-      세상에 천만 명의 ${textInput} 팬이 있다면, 나는 여전히 그들 중 한 명일 것이다.
-      세상에 백 명의 ${textInput} 팬이 있다면, 나는 아직도 그들 중 한 명일 것이다.
-      세상에 한 명의 ${textInput} 팬이 있다면, 그 사람은 아마도 나일 것이다.
-      세상에 단 한 명의 ${textInput} 팬도 없다면, 나는 그제서야 이 세상에 없는 것이다.
-      
-      ${textInput}, 나의 사랑.
-      ${textInput}, 나의 빛.
-      ${textInput}, 나의 어둠.
-      ${textInput}, 나의 삶.
-      ${textInput}, 나의 기쁨.
-      ${textInput}, 나의 슬픔.
-      ${textInput}, 나의 안식.
-      ${textInput}, 나의 영혼.
-      ${textInput}, 나.`
+오늘부터 지지관계에서 벗어나
+${textInput}${checkBatchim(textInput)} 나는 한몸으로 일체가 된다.
+${textInput}에 대한 공격은 나에 대한 공격으로 간주한다.
+
+`
+    const ver01 =
+`세상에 70억 명의 ${textInput} 팬이 있다면, 나는 그들 중 한 명일 것이다.
+세상에 1억 명의 ${textInput} 팬이 있다면, 나 또한 그들 중 한 명일 것이다.
+세상에 천만 명의 ${textInput} 팬이 있다면, 나는 여전히 그들 중 한 명일 것이다.
+세상에 백 명의 ${textInput} 팬이 있다면, 나는 아직도 그들 중 한 명일 것이다.
+세상에 한 명의 ${textInput} 팬이 있다면, 그 사람은 아마도 나일 것이다.
+세상에 단 한 명의 ${textInput} 팬도 없다면, 나는 그제서야 이 세상에 없는 것이다.
+
+`
+    const ver02 =
+`${textInput}, 나의 사랑.
+${textInput}, 나의 빛.
+${textInput}, 나의 어둠.
+${textInput}, 나의 삶.
+${textInput}, 나의 기쁨.
+${textInput}, 나의 슬픔.
+${textInput}, 나의 안식.
+${textInput}, 나의 영혼.
+${textInput}, 나.`
+
+    let output = "";
+    if (checkVer00) {
+      output+=ver00;
+    }
+    if (checkVer01) {
+      output+=ver01;
+    }
+    if (checkVer02) {
+      output+=ver02;
+    }
+
     setText(output);
+
     if (autoCopy) {
       textRef.current.textContent = output;
       navigator.clipboard.writeText(output);
     };
 
-
   }
+
+  const showTooltip = (event, text) => {
+    setTooltip(text);
+  };
+
+  const hideTooltip = () => {
+    setTooltip("");
+  };
+
+  const handleMouseMove = (event) => {
+    setMousePosition({ x: event.clientX, y: event.clientY });
+  };
 
   return (
     <div>
@@ -101,50 +136,57 @@ function Generator() { // 밈 생성기
       <div className="select">
         <h4>밈 종류 선택</h4>
       </div>
+
       <div className="select">
-        <label>
-          원본 <Info />
+        <label
+          onMouseEnter={(event) => showTooltip(event, "오늘부로 지지를 철회한다. 오늘부로 지지관계에서 벗어나 •••")}
+          onMouseLeave={hideTooltip}>
+          원본
+          <Info />
           <input type="checkbox"
-            name="version"
-            value="origin"
             className="check"
+            onChange={(e) => setCheckVer00(!checkVer00)}
             defaultChecked
           />
         </label>
 
-        <label>
-          호날두 <Info />
-          <input
-            type="checkbox"
-            name="version"
-            value="ronaldo"
-            className="check"
-          />
-        </label>
-
-        <label>
-          롤리타 <Info />
+        <label
+          onMouseMove={handleMouseMove}
+          onMouseEnter={(event) => showTooltip(event, "세상에 70억명의 팬이 있다면, 나는 그들 중 한 명일 것이다. •••")}
+          onMouseLeave={hideTooltip}>
+          호날두
+          <Info />
           <input type="checkbox"
-            name="version"
-            value="lolita"
             className="check"
+            onChange={(e) => setCheckVer01(!checkVer01)}
+            defaultChecked
           />
         </label>
 
-        {/* {
-        version
-        ? <p>종류가 선택되지 않았습니다.</p>
-        : { 종류 선택 코드 입력 }
-        } */}
-
+        <label
+          onMouseEnter={(event) => showTooltip(event, "나의 사랑, 나의 빛, 나의 어둠, 나의 삶, 나의 기쁨, 나의 슬픔, •••")}
+          onMouseLeave={hideTooltip}>
+          롤리타
+          <Info />
+          <input type="checkbox"
+            className="check"
+            onChange={(e) => setCheckVer02(!checkVer02)}
+            defaultChecked
+          />
+          
+        </label>
+        {tooltip && (
+          <div className="tooltip">
+            {tooltip}
+          </div>
+        )}
       </div>
 
       <div className="select">
         <p style={{ margin: "auto 15px" }}>
           클립보드 <br />자동복사
         </p>
-        <input
-          type="checkbox"
+        <input type="checkbox"
           id="autoCopy"
           onChange={(e) => setAutoCopy(e.target.checked)}
           defaultChecked
@@ -159,24 +201,21 @@ function Generator() { // 밈 생성기
         <h4 style={{ padding: "8px" }}>이름</h4>
         <input type="text" ref={inputRef}
         />
-        <button onClick={memeText} style={{ fontSize: "18px" }}>
+        <button onClick={memeText}>
           생성하기
         </button>
       </div>
 
       <div>
-        <div className="output">
-          <p ref={textRef}>{text}</p>
+        <div className="outputText">
+          <p ref={textRef}>{text}</p> {/* 텍스트 출력*/}
         </div>
       </div>
 
       <div className="output">
-        <button
-          type="button"
-          ref={textRef}
-          onClick={() => {
-            navigator.clipboard.writeText(text)}}
-        >
+        <button type="button"
+          onClick={() => {navigator.clipboard.writeText(text)} }
+          style={{width: "250px"}}>
           클립보드에 복사하기
         </button>
       </div>

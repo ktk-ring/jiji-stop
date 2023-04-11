@@ -11,9 +11,6 @@ div {
   box-sizing: border-box;
 }
 
-h1 {
-
-}
 h2 {
   font-size: 24px;
   padding-top: 24px;
@@ -35,6 +32,7 @@ button {
   box-shadow: 0 0 15px rgba(0 0 0 / 20%);
   cursor: pointer;
   margin: 25px 0;
+  font-size: 18px;
 }
 
 input[type="text"] {
@@ -77,6 +75,14 @@ input[type="text"] {
   background: #f3f3f3;
   padding: 0 40px;
 }
+.outputText {
+  display: flex;
+  justify-content: left;
+  text-align: left;
+  font-size: 18px;
+  background: #f3f3f3;
+  padding: 0 60px;
+}
 
 .select {
   display: flex;
@@ -99,6 +105,19 @@ input[type="text"] {
   box-shadow: 0 0 15px rgba(0 0 0 / 20%);
   cursor: pointer;
   margin: 10px 20px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 500px;
+  z-index: 999;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .toggleSwitch {

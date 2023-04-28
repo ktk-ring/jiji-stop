@@ -3,27 +3,57 @@
     height: 100%;
   }
   
-  .left {
+  .left, .right {
+    position: relative;
     flex: 1;
-  }
-  
-  .right {
-    flex: 1;
+    height: 814.5px;
+    background-color: #f3f3f3;
+    border-bottom: 2px solid gray;
+    border-right: 1px solid gray;
+    transition: all 0.2s ease-in-out;
   }
 
+  .example {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #dedede;
+  }
+  .exampleButton {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 3);
+    padding: 20px 0;
+    margin: 0;
+    font-size: 32px;
+    background-color: #f3f3f3;
+    transition: all 0.2s ease-in-out;
+  }
+  .exampleButton:hover {
+    background-color: #dedede;
+    transition: all 0.2s ease-in-out;
+  }
+  
   .select {
     display: flex;
     justify-content: center;
     background: #f3f3f3;
     padding: 0 10px;
+    margin: 0 0 0 0;
   }
 
   .input {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
     display: flex;
     justify-content: center;
     background: #cdcdcd;
-    border-bottom: 1px solid gray;
-    padding: 0 10px;
+    padding: 0 50px;
   }
   .output {
     display: flex;
@@ -41,10 +71,14 @@
     background: #f3f3f3;
     padding: 0 10%;
   }
-  
-  
-  .info {
-    width: 18px;
+  .outputButton {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    bottom: 0;
+    padding: 0 50px;
   }
   
   .check {

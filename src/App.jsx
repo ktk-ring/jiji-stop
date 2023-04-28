@@ -4,8 +4,6 @@ import React, { Component }  from 'react';
 import Generator from "./components/Generator.js"
 
 
-// let postPosition;
-
 function App() {
 
   return (
@@ -19,7 +17,7 @@ function App() {
 
       <Generator />
 
-      <h3 className="title_box">『오늘부로 지지를 철회한다.<br/>오늘부터 지지관계에서 벗어나<br/>나는 한 몸으로 일체가 된다.<br/>•••』</h3>
+      <h3 className="titleBox">『오늘부로 지지를 철회한다.<br/>오늘부터 지지관계에서 벗어나<br/>나는 한 몸으로 일체가 된다.<br/>•••』</h3>
 
       <div className="list">
         <h3 style={{margin: "42px auto 22px auto"}}>사이트 설명</h3>
@@ -31,32 +29,34 @@ function App() {
 
           원본부터 변형된 버전까지 자유롭게 선택하여 생성할 수 있습니다.<br />
         </p>
+
         <h3 style={{margin: "42px auto 22px auto"}}>기타 정보</h3>
         <h4>제작자 정보</h4>
+
         <p style={{lineHeight: "200%"}}>
           김태균&nbsp;
           <a href="https://www.github.com/ktk-ring/" target="_blank">
             <img className="logo"        
               alt="GitHub_Logo"
-              src="img/logo_github.png"
-            />GitHub</a>&nbsp;
+              src={`${process.env.PUBLIC_URL}/img/logo_github.png`}
+            /></a>&nbsp;
           <a href="https://www.instagram.com/ring_squaredd/" target="_blank">
           <img className="logo"        
               alt="Instagram_Logo"
-              src="img/logo_instagram.png"
-            />Instagram</a>&nbsp;
+              src={`${process.env.PUBLIC_URL}/img/logo_instagram.png`}
+            /></a>&nbsp;
           <br/>
           송하민&nbsp;
           <a href="https://www.github.com/kegani42/" target="_blank">
             <img className="logo"        
               alt="GitHub_Logo"
-              src="img/logo_github.png"
-            />GitHub</a>&nbsp;
+              src={`${process.env.PUBLIC_URL}/img/logo_github.png`}
+            /></a>&nbsp;
           <a href="https://www.instagram.com/taf_42" target="_blank">
           <img className="logo"        
               alt="Instagram_Logo"
-              src="img/logo_instagram.png"
-            />Instagram</a>&nbsp;
+              src={`${process.env.PUBLIC_URL}/img/logo_instagram.png`}
+            /></a>&nbsp;
           <p style={{fontSize: "16px"}}>공동 기획 및 공동 제작</p>
         </p>
       </div>

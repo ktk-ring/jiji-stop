@@ -20,11 +20,11 @@ h2 {
 h3 {
   font-size: 24px;
 }
-.title_box {
+.titleBox {
   display: flex;
   justify-content: center;
-  width: 400px;
-  font-size: 24px;
+  width: 17.5%;
+  font-size: 100%;
   font-style: italic;
   line-height: 36px;
   border-radius: 25px;

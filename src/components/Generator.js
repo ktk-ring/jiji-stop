@@ -30,10 +30,8 @@ function Generator() { // 밈 생성기
   let [autoCopy, setAutoCopy] = useState(true); // 자동 복사 기본값: 켜짐
 
   const [activeTab, setActiveTab] = useState(0); // 예시 탭
-  const [backgroundColor, setBackgroundColor] = useState("#f3f3f3");
   const mouseHover = (index) => {
     setActiveTab(index);
-    setBackgroundColor("#cdcdcd");
   }
 
   const memeText = () => {
@@ -92,7 +90,6 @@ function Generator() { // 밈 생성기
 
   return (
     <div className="container">
-
 
       <div className="left">{/* 여기서 부터 왼쪽 */}
 

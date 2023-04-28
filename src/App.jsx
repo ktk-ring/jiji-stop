@@ -1,6 +1,5 @@
 import './App.css';
-import { useState, useRef } from 'react';
-import React, { Component }  from 'react';
+import React from 'react';
 import Generator from "./components/Generator.js"
 
 
@@ -35,25 +34,25 @@ function App() {
 
         <p style={{lineHeight: "200%"}}>
           김태균&nbsp;
-          <a href="https://www.github.com/ktk-ring/" target="_blank">
-            <img className="logo"        
+          <a href="https://www.github.com/ktk-ring/" target="_blank" rel="noreferrer">
+            <img className="logo"
               alt="GitHub_Logo"
               src={`${process.env.PUBLIC_URL}/img/logo_github.png`}
             /></a>&nbsp;
-          <a href="https://www.instagram.com/ring_squaredd/" target="_blank">
-          <img className="logo"        
+          <a href="https://www.instagram.com/ring_squaredd/" target="_blank" rel="noreferrer">
+          <img className="logo"
               alt="Instagram_Logo"
               src={`${process.env.PUBLIC_URL}/img/logo_instagram.png`}
             /></a>&nbsp;
           <br/>
           송하민&nbsp;
-          <a href="https://www.github.com/kegani42/" target="_blank">
-            <img className="logo"        
+          <a href="https://www.github.com/kegani42/" target="_blank" rel="noreferrer">
+            <img className="logo"
               alt="GitHub_Logo"
               src={`${process.env.PUBLIC_URL}/img/logo_github.png`}
             /></a>&nbsp;
-          <a href="https://www.instagram.com/taf_42" target="_blank">
-          <img className="logo"        
+          <a href="https://www.instagram.com/taf_42" target="_blank" rel="noreferrer">
+          <img className="logo"
               alt="Instagram_Logo"
               src={`${process.env.PUBLIC_URL}/img/logo_instagram.png`}
             /></a>&nbsp;

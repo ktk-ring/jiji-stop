@@ -24,7 +24,8 @@ h3 {
   display: flex;
   justify-content: center;
   width: 17.5%;
-  font-size: 100%;
+  min-width: 325px;
+  font-size: 112.5%;
   font-style: italic;
   line-height: 36px;
   border-radius: 25px;

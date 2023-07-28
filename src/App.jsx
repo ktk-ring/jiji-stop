@@ -10,7 +10,7 @@ function App() {
       <div className="mainTitle">
         <p>
           <h1>'지지를 철회한다' 밈 생성기</h1>
-          <h2>jiji-stop generator</h2>
+          <h2>jiji-stop meme generator</h2>
         </p>
       </div>
 

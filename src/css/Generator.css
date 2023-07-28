@@ -9,8 +9,13 @@
     height: 814.5px;
     background-color: #f3f3f3;
     border-bottom: 2px solid gray;
-    border-right: 1px solid gray;
     transition: all 0.2s ease-in-out;
+  }
+  .left {
+    border-right: 1px solid gray;
+  }
+  .right {
+    border-left: 1px solid gray;
   }
 
   .example {

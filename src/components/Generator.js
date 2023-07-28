@@ -42,31 +42,31 @@ function Generator() { // 밈 생성기
     const textInput = inputRef.current.value;
     const ver00 =
       `오늘부로 ${textInput} 지지를 철회한다.
-  
-  오늘부터 지지관계에서 벗어나
-  ${textInput}${checkBatchim(textInput)} 나는 한몸으로 일체가 된다.
-  ${textInput}에 대한 공격은 나에 대한 공격으로 간주한다.
-  
-  `
+
+오늘부터 지지관계에서 벗어나
+${textInput}${checkBatchim(textInput)} 나는 한몸으로 일체가 된다.
+${textInput}에 대한 공격은 나에 대한 공격으로 간주한다.
+
+`
     const ver01 =
       `세상에 70억 명의 ${textInput} 팬이 있다면, 나는 그들 중 한 명일 것이다.
-  세상에 1억 명의 ${textInput} 팬이 있다면, 나 또한 그들 중 한 명일 것이다.
-  세상에 천만 명의 ${textInput} 팬이 있다면, 나는 여전히 그들 중 한 명일 것이다.
-  세상에 백 명의 ${textInput} 팬이 있다면, 나는 아직도 그들 중 한 명일 것이다.
-  세상에 한 명의 ${textInput} 팬이 있다면, 그 사람은 아마도 나일 것이다.
-  세상에 단 한 명의 ${textInput} 팬도 없다면, 나는 그제서야 이 세상에 없는 것이다.
-  
+세상에 1억 명의 ${textInput} 팬이 있다면, 나 또한 그들 중 한 명일 것이다.
+세상에 천만 명의 ${textInput} 팬이 있다면, 나는 여전히 그들 중 한 명일 것이다.
+세상에 백 명의 ${textInput} 팬이 있다면, 나는 아직도 그들 중 한 명일 것이다.
+세상에 한 명의 ${textInput} 팬이 있다면, 그 사람은 아마도 나일 것이다.
+세상에 단 한 명의 ${textInput} 팬도 없다면, 나는 그제서야 이 세상에 없는 것이다.
+
   `
     const ver02 =
       `${textInput}, 나의 사랑.
-  ${textInput}, 나의 빛.
-  ${textInput}, 나의 어둠.
-  ${textInput}, 나의 삶.
-  ${textInput}, 나의 기쁨.
-  ${textInput}, 나의 슬픔.
-  ${textInput}, 나의 안식.
-  ${textInput}, 나의 영혼.
-  ${textInput}, 나.`
+${textInput}, 나의 빛.
+${textInput}, 나의 어둠.
+${textInput}, 나의 삶.
+${textInput}, 나의 기쁨.
+${textInput}, 나의 슬픔.
+${textInput}, 나의 안식.
+${textInput}, 나의 영혼.
+${textInput}, 나.`
 
     let output = "";
     if (checkVer00) {
